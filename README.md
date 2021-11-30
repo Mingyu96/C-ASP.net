@@ -6,8 +6,8 @@
 - User be able to view purchase history
 
 #Technology involved
-Object-oriented software design (C#)
-Front-End design using View in MVC, which involved HTML, JavaScript & CSS
-Database Design using code first approach (Entity framework)
-Implemented login and logout session for security purpose
-Allow guest to add item to cart by manipulating session
+- Object-oriented software design (C#)
+- Front-End design using View in MVC, which involved HTML, JavaScript & CSS
+- Database Design using code first approach (Entity framework)
+- Implemented login and logout session for security purpose
+- Allow guest to add item to cart by manipulating session

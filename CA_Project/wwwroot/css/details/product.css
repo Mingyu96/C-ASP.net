@@ -1,0 +1,277 @@
+﻿
+#number-of-items-cart {
+    border: 1px solid black;
+    background-color: #2E937A;
+    border-radius: 10px;
+    padding: 3px 3px;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.productdetails {
+    padding: 0.5em;
+    max-width: 100%;
+    display: block;
+    border: none;
+    border-radius: 25px;
+    padding: 1em;
+    padding-bottom: 2em;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.feedbackdetails {
+    margin: 20px 0px;
+    text-align: left;
+}
+
+.feedback-user {
+    font-weight: bold;
+    font-size: 1.1em;
+    float: left;
+    overflow: hidden;
+    width: 13%;
+}
+
+.goods_count {
+    width: 40px;
+    height: 40px;
+    background-color: #f80;
+    font: bold 18px/40px 'Microsoft YaHei UI';
+    text-align: center;
+    color: #fff;
+}
+
+
+.center_con {
+    width: 1200px;
+    height: 550px;
+    margin: 0 auto;
+    /* background: white;*/
+    overflow: hidden;
+}
+
+.main_menu {
+    width: 80px;
+    height: 200px;
+}
+
+.goods_detail_list {
+    width: 730px;
+    height: 350px;
+}
+
+
+    .goods_detail_list h3 {
+        font-size: 24px;
+        line-height: 24px;
+        color: #666;
+        font-weight: normal;
+    }
+
+    .goods_detail_list p {
+        color: #666;
+        line-height: 40px;
+    }
+
+.goods_num {
+
+}
+
+    .goods_num .num_name {
+        width: 70px;
+        height: 52px;
+        line-height: 52px;
+    }
+
+    .goods_num .num_add {
+        width: 75px;
+        height: 50px;
+        border: 1px solid #dddddd;
+    }
+
+        .goods_num .num_add .num_show {
+            width: 49px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border: 0px;
+            outline: none;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .goods_num .num_add .add, .goods_num .num_add .minus {
+            width: 25px;
+            line-height: 25px;
+            text-align: center;
+            border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .goods_num .num_add .minus {
+            border-bottom: 0px;
+        }
+
+.total {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.operate_btn {
+    height: 40px;
+    margin-top: 35px;
+    font-size: 0;
+    position: relative;
+}
+
+    .operate_btn .buy_btn, .operate_btn {
+        display: inline-block;
+        width: 178px;
+        height: 38px;
+        border: 1px solid #c40000;
+        font-size: 14px;
+        color: #c40000;
+        line-height: 38px;
+        text-align: center;
+        background-color: #ffeded;
+    }
+
+    .operate_btn .add_cart {
+        background-color: #c40000;
+        color: #fff;
+        margin-left: 10px;
+        position: relative;
+        z-index: 10;
+    }
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+　 * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0
+}
+
+.btn-comment {
+    display: block;
+    margin-bottom: 5em;
+}
+
+.btn-numbox {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+    /*.btn-numbox li {
+        float: left;
+    }*/
+
+    .btn-numbox li {
+        display: inline-block;
+        font-size: 20px;
+        color: white;
+        vertical-align: sub;
+    }
+
+    .btn-numbox .count {
+        overflow: hidden;
+        margin: 0 16px 0 -20px;
+    }
+
+        .btn-numbox .count .num-jian,
+        .input-num,
+        .num-jia {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            font-size: 18px;
+            color: #212529;
+            cursor: pointer;
+            border: 1px solid #212529;
+        }
+
+        .btn-numbox .count .input-num {
+            width: 58px;
+            height: 26px;
+            color: #333;
+            border-left: 0;
+            border-right: 0;
+        }
+
+
+.number {
+    display: inline-block;
+    font-weight: bold;
+    color: black;
+    vertical-align: baseline;
+}
+
+
+
+
+
+#container {
+    position: relative;
+}
+
+.leftView {
+    position: relative;
+    width: 418px;
+    height: 300px;
+    margin-left :360px;
+}
+
+.smallImg {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.mask {
+    
+    position: absolute;
+    
+    cursor: move;
+}
+
+.rightView {
+    position: absolute;
+    left: 880px;
+    top: 0;
+    width: 418px;
+    height: 418px;
+    overflow: hidden;
+   
+}
+
+.bigImg {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

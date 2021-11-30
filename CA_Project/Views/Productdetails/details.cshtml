@@ -1,0 +1,107 @@
+﻿@section CSS{
+    <link rel="stylesheet" href="~/css/details/product.css" />
+
+}
+
+@{
+    Product product = (Product)ViewData["product"];
+    Cart cart1 = (Cart)ViewData["cart"];
+    bool guest = (bool)ViewData["guest"];
+
+    List<Feedback> feedbacks = (List<Feedback>)ViewData["feedbacks"];
+}
+
+
+
+
+<div id="container" class="productdetails">
+    <div class="leftView">
+        <div class="mask"></div>
+        <img class="smallImg" src="\Images\@product.ImageFile" alt="缩小版" />
+    </div>
+    <div class="rightView">
+        <img id="big" class="bigImg" src="\Images\@product.ImageFile" alt="放大版" />
+    </div>
+
+    <div>
+        <p class="product-name">@product.ProductName</p>
+    </div>
+    <div>
+        <p class="product-desc" style="text-align:center;">@product.Desc</p>
+    </div>
+    <div class="p-price">
+        <label>Price: $ </label>
+        <div class="product-price" id="pprice">@product.Price</div>
+    </div>
+    <div style="text-align:center;">
+        <ul class="btn-numbox">
+            <li><span class="number">Quantity: </span></li>
+            <li style="position: relative;">
+                <ul class="count">
+                    <li><span id="num-jian" class="num-jian">-</span></li>
+                    <li><input type="text" class="input-num" id="input-num" value="1" /></li>
+                    <li><span id="num-jia" class="num-jia">+</span></li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+    <div class="total" id="total">Total: $  @product.Price</div>
+    <div>
+        <button class="button add-cart-btn" id="@product.Id">Add to cart</button>
+    </div>
+</div>
+
+
+<div class="productdetails feedbackdetails">
+    <div>
+        <p class="product-name">Reviews</p>
+    </div>
+
+    @foreach (Feedback feedback in feedbacks)
+    {
+        <div class="feedback-user">@feedback.User.Username</div>
+        <div>
+            <div style="word-wrap: break-word; position: relative;">
+                @feedback.Details
+                <div style="float:right;">
+                    Rating :
+                    @for (int i = 0; i < @feedback.Rating; i++)
+                    {
+                        <p style="display:inline">★</p>
+                    }
+                </div>
+                <p></p>
+            </div>
+        </div>
+    }
+</div>
+
+@if (guest == false)
+{
+<div>
+    <form action="/Productdetails" method="post">
+        <p class="product-name">Submit a review</p>
+        <textarea cols="60" rows="5" id="details" name="details"></textarea>
+        <p style="font-weight: bold;"> Rating:
+            <select id="Rating" name="Rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </p>
+        <p>
+            <button class="button btn-comment" type="submit" formaction="/Productdetails/Renew/{details}/{Rating}/@product.ProductName">Submit</button>
+        </p>
+    </form>
+
+
+</div>
+}
+
+
+@section Scripts{
+    <script src="/js/Productdetails/details.js"></script>
+}

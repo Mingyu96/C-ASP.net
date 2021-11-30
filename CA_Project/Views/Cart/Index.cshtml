@@ -1,0 +1,83 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@{
+    List<CartProduct> cartProducts = (List<CartProduct>)ViewData["cartProducts"];
+    string referrer = (string)ViewData["referrer"];
+}
+
+<h1>@referrer</h1>
+<h1 class="display-4" style="color: #2E937A;font-weight: bold">Shopping Cart</h1>
+
+<div class="totals">
+    <label>Total: $</label>
+    <div id="cart-total"></div>
+</div>
+
+@{
+    if (cartProducts == null)
+    {
+        <h1>No product have been added.</h1>
+    }
+    else
+    {
+        foreach (CartProduct item in cartProducts)
+        {
+            Guid id = item.Id;
+            string img = item.Product.ImageFile;
+            string name = item.Product.ProductName;
+            string desc = item.Product.Desc;
+            float price = item.Product.Price;
+            float subtotal = price * item.Quantity;
+
+            <div id=@id class="p-wrapper">
+                <div class="SC-product">
+                    <div>
+                        <img class="product-img" src="\Images\@img" />
+                    </div>
+                    <div>
+                        <p class="product-name">@name</p>
+                    </div>
+                    <div>
+                        <p class="product-desc">@desc</p>
+                    </div>
+                </div>
+
+                <div class="QtyPR">
+                    <div class="p-price">
+                        <label>Price: $</label>
+                        <div class="product-price">@price</div>
+                    </div>
+                    <div class="p-qty">
+                        <label>Quantity: </label>
+                        <input type="number" class="qtybox" value="@item.Quantity" min="1" id="@id">
+                    </div>
+                    <div class="total-p-price">
+                        <label> Subtotal: $</label>
+                        <div class="total-product-price">@subtotal</div>
+                    </div>
+                    <div>
+                        <button class="remove-pdt" id="@id">Remove</button>
+                    </div>
+                </div>
+            </div>
+        }
+
+        Guid cartid = (Guid)ViewData["cartid"];
+        <div class="checkoutbtn">
+            <button class="button" id="checkout" cartid="@cartid">Check Out</button>
+
+        </div>
+    }
+
+}
+
+@section Scripts{
+    <script src="~/js/Cart/app.js"></script>
+    <script src="~/js/ProductHome/app.js"></script>
+}
+@section CSS{
+    <link href="~/css/Cart/style.css" rel="stylesheet" />
+}

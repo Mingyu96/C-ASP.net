@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Sign Up";
+}
+@section Scripts{
+    <script src="~/js/Home/Create.js"></script>
+}
+<div class="text-left">
+    <h2 class="display-4" style="color: #2E937A;font-weight: bold">Sign Up</h2><br />
+</div>
+<form id="form" action="/Home/Create" method="post">
+    <table>
+        <tr>
+            <td class="product-name">User Id:</td>
+            <td><input class="search-input" id="id" name="id" autocomplete="off"></td>
+        </tr>
+        <tr>
+            <td class="product-name">Password:</td>
+            <td><input class="search-input" type="password" id="password" name="password"></td>
+            @*checkbox to show password*@
+            <td><input class="show-pass"type="checkbox" id="show">Show Password</td>
+            <td id="checkpass" style="display:none;color:red;position:relative;top:10px">*Your password length must be between 6 to 20!</td>
+        </tr>
+        <tr>
+            <td class="product-name">Confirm Password:</td>
+            <td><input class="search-input" type="password" id="confirm" name="confirm"></td>
+        </tr>
+        <tr>
+            <td class="product-name">Email:</td>
+            <td><input class="search-input" type="text" id="email" name="email"></td>
+        </tr>
+        <tr>
+            <td class="product-name">Full Name:</td>
+            <td><input class="search-input" type="text" id="fullname" name="fullname"></td>
+        </tr>
+    </table>
+    <div colspan="3" style ="position:relative; left:350px" ><button  class="button" id="submitbtn" type="submit">Create </button></div>
+
+</form>

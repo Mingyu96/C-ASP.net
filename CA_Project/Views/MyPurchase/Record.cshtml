@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewData["Title"] = "Shopping Cart";
+
+
+    List<Purchase> PurchaseId = (List<Purchase>)ViewData["Purchase"];
+    PurchaseId = (List<Purchase>) PurchaseId.OrderByDescending(x => x.Date.Ticks).ToList(); //Purchase order by latest date
+    List<PurchaseProduct> _Detail = (List<PurchaseProduct>)ViewData["Detail"];
+    var Dt_Product = _Detail.Select(x => new { _Product = x.Product.Id, _Purhcase = x.Purchase.Id }).Distinct();
+
+    //Anonymous Dtproduct is to have distinct query with product Id and Purchase Id
+
+
+
+}
+@section Scripts {
+    <script src="~/js/MyPurchase/Purchase.js"></script>
+}
+@section CSS{
+    <link href="~/css/MyPurchase/style.css" rel="stylesheet" />
+}
+
+
+<h1 class="display-4" style="color: #2E937A;font-weight: bold">My Purchase</h1>
+
+
+<body>
+    @foreach (Purchase Purchases in PurchaseId) //Display Wrapper for each purchase
+
+    {
+        string date = Purchases.Date.ToString("yyyy-MM-dd"); 
+    <div id="Purchases.Id" class="p-wrapper">
+        <div class="dates">
+            <label class="product-name">Date: </label>
+            <div class="product-desc">@date</div>
+            <label class="product-name">Purchase Id: </label>
+            <div class="product-desc">@Purchases.Id</div>
+        </div>
+
+        @foreach (var detail in Dt_Product)// display product container for each distinct product in single purchase
+
+        {
+            var current_list = _Detail.Where(x => x.Product.Id == detail._Product && x.Purchase.Id == detail._Purhcase);
+            int quantity = _Detail.Where(x => x.Product.Id == detail._Product && x.Purchase.Id == detail._Purhcase).Count();
+            PurchaseProduct current = _Detail.FirstOrDefault(x => x.Product.Id == detail._Product);
+            string img = current.Product.ImageFile;
+            string name = current.Product.ProductName;
+            float price = current.Product.Price;
+            string desc = current.Product.Desc;
+
+
+            @if (Purchases.Id == detail._Purhcase) 
+            {
+    <div class="SC-product">
+        <div>
+            <img class="product-img" src="\Images\@img" />
+        </div>
+
+        <div>
+            <p class="product-name">@name</p>
+        </div>
+        <div>
+            <p class="product-desc">@desc</p>
+        </div>
+        <div class="p-price">
+            <label>Price: </label>
+            <div class="product-price">$@price</div>
+        </div>
+        <div class="p-qty">
+            <label>Qty: </label>
+            <div class="product-price">@quantity</div>
+        </div>
+
+        <label>Activation Code: </label>
+        <select class="dropdown" id="list" onchange="getSelectValue();">
+            @foreach (var activationcode in current_list) //display activation code for single product in single purchase
+            {
+                <option value="js" class="dr">@activationcode.Id</option>
+            }
+        </select>
+        <div>
+            <button class="button">Download</button>    <! ––//non-functional download button just for display––>
+        </div>
+
+    </div>
+                
+            }
+
+        }
+
+
+    </div>
+    }
+
+
+
+</body>
+
+
+
+
+

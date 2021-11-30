@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Shopping Cart</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="@ViewData["css"]" />
+    @RenderSection("CSS", required: false)
+    @*<link href="/css/Home/style.css" rel="stylesheet" />*@
+</head>
+<body>
+    @{
+        int sum = 0;
+        string session = Context.Request.Cookies["sessionid"];
+        string name = Context.Request.Cookies["name"];
+        Cart cart1 = (Cart)ViewData["cart"];
+        if (cart1 != null)
+        {
+            foreach (CartProduct i in cart1.CartProducts) { sum += i.Quantity; }
+        }
+    }
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container" style="position:relative; padding: 0px 10px">
+                <a class="navbar-brand" asp-area="" asp-controller="ProductHome" asp-action="Index" style="width: 200px">Shopping Page</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="left-links">
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li id="displayname" class="nav-item nav-link"style="font-weight: 900; color: #2E937A;font-size:18px">Hello, @name</li>
+                            <li class="nav-item">
+                                <span id="login" class="nav-link text-dark"style="font-weight:700">Login</span>
+                            </li>
+                            <li class="nav-item">
+                                <a id="signup" asp-action="register"style="font-weight:700" class="nav-link text-dark">Sign Up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="logout" class="nav-link text-dark" asp-action="Logout" asp-controller="Home">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--Nav bar right side-->
+                <div class="right-links">
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a href="/cart/index"><img class="ex2" src="/Images/cart.png" alt="Cart" id="shopping-cart-img" style="max-width:auto; height: auto; margin:0px; padding-top:5px" /></a>
+
+                            </li>
+                            <li class="nav-item">
+                                    <p style="color: white; font-size: 15px;margin: 0px 5px; padding-top: 5px; font-weight: 900" id="number-of-items-cart">@sum</p>
+                            </li>
+                            <li class="nav-item">
+                                <a id="MyPurchase" class="nav-link text-dark" asp-action="Record" asp-controller="MyPurchase">Purchases</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-action="myaccount" asp-controller="Account" style="width:80px" id="account">Account</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3" id="alignment-container">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer text-light">
+        <div class="container">
+            <div class="footer-left-links">
+                <a class="text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a> |
+                Welcome to Team 2 Software Shopping Website! <div class="text-light"> </div>
+            </div>
+            <div class="footer-right-links">
+                <a href="web.whatsapp.com"><img src="/Images/wa.png" alt="Whatsapp icon" /></a>
+                <a href="facebook.com"><img src="/Images/fb.png" alt="Facebook icon" /></a>
+                <a href="mailto:"><img src="/Images/email.png" alt="Email icon" /></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

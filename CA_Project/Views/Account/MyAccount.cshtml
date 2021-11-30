@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using CA_Project.Models;
+@{ User acc = (User)ViewData["account"];
+    string name = acc.Username;
+    string email = acc.Email;
+}
+@section CSS{
+    <link href="~/css/ProductHome/style.css" rel="stylesheet" />
+}
+
+    <div class="text-left">
+        <h1 class="display-4" style="color: #2E937A;font-weight: bold">My Account</h1><br />
+    </div>
+    <div class="accountdetails">
+        <form>
+            <table>
+                <tr class="product-name">
+                    <td>User Name: </td>
+                    <td colspan="3">@name</td>
+                </tr>
+                <tr class="product-name">
+                    <td>Email: </td>
+                    <td colspan="3">@email</td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="right">
+                        <br />
+                        <button class="button" id="submitbtn" type="submit" formaction="/Account/ChangePW">Change Password</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+@section Scripts{
+    <script src="~/js/ProductHome/app.js"></script>
+}

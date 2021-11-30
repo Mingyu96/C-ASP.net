@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Signup is successful</h1>
+<button class="button"><a asp-action="index" style="color:white">Login Again</a></button>
+
+@section Scripts{ 
+    <script>
+        const logout = document.getElementById("logout");
+        const login = document.getElementById("login")
+        const cartImg = document.getElementById("shopping-cart-img");
+        const displayname = document.getElementById("displayname");
+        const account = document.getElementById("account");
+        const purchases = document.getElementById("MyPurchase");
+
+        logout.style.display = 'none';
+        cartImg.style.display = 'none';
+        displayname.style.display = 'none';
+        account.style.display = "none";
+        purchases.style.display = 'none';
+        login.style.display = 'none';
+    </script>
+}

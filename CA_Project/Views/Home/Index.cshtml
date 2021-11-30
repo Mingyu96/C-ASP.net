@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+@section CSS{
+    <link href="/css/Home/style.css" rel="stylesheet" />
+}
+
+
+
+<div class="container-login" id="modal">
+    <div class="modal-content">
+        <h2>Login to Account</h2>
+        <div class="close" id="close">+</div><br />
+        <form asp-action="Login" method="post">
+            <table>
+                <tr>
+                    <td class="label-input">Username: </td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="username"required></td>
+                </tr>
+                <tr>
+                    <td class="label-input">Password: </td>
+                </tr>
+                <tr>
+                    <td><input type="password" name="password"required></td>
+                </tr>
+                <tr>
+                    <td colspan="2" ><input type="submit" name="login-btn" class="button" value="Login"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<div id="modal2">
+        <div class="modal-content">
+            <div class="close" id="close2">+</div>
+            <h2>Sign Up an account</h2>
+            <form asp-action="Signup">
+                <table>
+                    <tr>
+                        <td class="label-input">Username: <p id="label-username" style="color:red"></p></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="username" id="username" required></td>
+                    </tr>
+                    <tr>
+                        <td class="label-input">Password: </td>
+                    </tr>
+                    <tr>
+                        <td><input type="password" name="password" required></td>
+                    </tr>
+                    <tr>
+                        <td class="label-input">Full Name: </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="fullname" required></td>
+                    </tr>
+                    <tr>
+                        <td class="label-input">Email: <p id="label-email" style="color:red"></p></td>
+                    </tr>
+                    <tr>
+                        <td><input type="email" name="email" id="email" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="submit-container"><input type="submit" name="signup-btn" class="signupLogin-btn" value="Sign Up"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+@section Scripts{
+    <script src="/js/Home/app.js"></script>
+}

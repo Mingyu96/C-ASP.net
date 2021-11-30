@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Change PassWord";
+}
+@section Scripts{
+    <script src="~/js/Home/changepw.js"></script>
+}
+<div class="text-left">
+    <h2 class="display-4" style="color: #2E937A;font-weight: bold">Change Password</h2><br>
+</div>
+<form id="form2" action="/Account/Validate" method="post">
+    <table>
+            <tr>
+                <td class="product-name">Password:</td>
+                <td><input style="padding:0.3em" class="search-input" type="password" id="cpassword" name="cpassword"></td>
+            </tr>
+            <tr>
+                <td class="product-name" style="padding:0.3em">New Password:</td>
+                <td><input style="padding:0.3em" class="search-input" type="password" id="newpassword" name="newpassword"></td>
+                <td id="checkpass1" style="display:none;color:red;position:relative;top:10px">*Your password length must be between 6 to 20!</td>
+            </tr>
+            <tr>
+                <td class="product-name"style="padding:0.3em">Confirm Password:</td>
+                <td><input style="padding:0.3em" class="search-input" type="password" id="confirmp" name="confirmp"></td>
+            </tr>
+            <tr>
+                <td colspan="3" align="right">
+                    <button class="button" id="subbtn" type="submit">Submit </button>
+                </td>
+            </tr>
+        </table>
+    </form>

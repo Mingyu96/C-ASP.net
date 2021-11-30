@@ -1,0 +1,66 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@section CSS{
+    <link href="~/css/ProductHome/style.css" rel="stylesheet" />
+}
+
+@{
+    List<Product> products = (List<Product>)ViewData["products"];
+    Cart cart1 = (Cart)ViewData["cart"];
+}
+
+@section Scripts{
+    <script src="/js/ProductHome/app.js"></script>
+}
+
+    <div class="search">
+        <form action="/Search/" method="POST">
+            <input class="search-input" style="padding-left:2em;" name="searchStr" placeholder="Search.." type="text" />
+            <button type="submit" class="search-button">
+                <img style="display: inline; position: relative; top:-40px; left:35px" src="/Images/magnifyglass.png">
+            </button>
+        </form>
+        
+    </div>
+
+
+    <div class="productlist" style="display:inline-block; width:fit-content; margin: 10px auto">
+        <!--can use the foreach loop here-->
+        @foreach (Product p in products)
+        {
+        <div class="a-product">
+            <div>
+                <img class="product-img" src="\Images\@p.ImageFile"/>
+            </div>
+            <div>
+                <p class="product-name">@p.ProductName</p>
+            </div>
+            <div>
+                <p class="product-desc">@p.Desc</p>
+            </div>
+            <div>
+                <p class="product-price">$@p.Price</p>
+            </div>
+            <div>
+                <button class="button " id="@p.ProductName">More details</button>
+                <script>
+                    var btn = document.getElementById('@p.ProductName')
+                    btn.onclick = function () {
+
+                        $.get("productdetails/detail")
+
+                        window.open('https://localhost:44328/productdetails/details/@p.ProductName');
+                    }
+                </script>
+                <button class="button add-cart-btn" id="@p.Id">Add to cart</button>
+            </div>
+            <div>
+                <br>
+               
+            </div>
+        </div>
+        }
+
+    </div>
+
